@@ -647,7 +647,7 @@ themeBtn.addEventListener('click',()=>{
 });
 try{const s=localStorage.getItem('hz-theme');if(s==='light'){dark=false;html.setAttribute('data-theme','light');themeBtn.textContent='☀️';}}catch(e){}
 
-/* 3 — SUBTLE PARTICLES — minimal, single blue tone, no halos */
+/* 3 — MINIMAL CURSOR-REACTIVE PARTICLES */
 !(function(){
   const cvs=document.getElementById('bg-canvas'),ctx=cvs.getContext('2d');
   let W,H,mouse={x:-9999,y:-9999};
@@ -657,31 +657,40 @@ try{const s=localStorage.getItem('hz-theme');if(s==='light'){dark=false;html.set
   class P{
     reset(){
       this.x=this.ox=Math.random()*W;this.y=this.oy=Math.random()*H;
-      this.vx=(Math.random()-.5)*.14;this.vy=(Math.random()-.5)*.14;
-      this.r=Math.random()*.9+.3;this.a=Math.random()*.12+.04;
+      this.vx=(Math.random()-.5)*.1;this.vy=(Math.random()-.5)*.1;
+      this.r=Math.random()*.8+.3;
+      this.a=Math.random()*.1+.04;
+      this.phase=Math.random()*Math.PI*2;
     }
     constructor(){this.reset();}
     step(){
-      const dx=this.x-mouse.x,dy=this.y-mouse.y,d=Math.hypot(dx,dy);
-      if(d<80){this.x+=dx/d*1.2;this.y+=dy/d*1.2;}
-      else{this.x+=(this.ox-this.x)*.018;this.y+=(this.oy-this.y)*.018;}
-      this.ox+=this.vx;this.oy+=this.vy;
-      if(this.ox<0||this.ox>W)this.vx*=-1;
-      if(this.oy<0||this.oy>H)this.vy*=-1;
-    }
-    draw(){
+      this.phase+=.007;
+      const alpha=this.a+Math.sin(this.phase)*.03;
+      /* gently drift toward cursor when nearby */
+      const dx=mouse.x-this.x,dy=mouse.y-this.y,d=Math.hypot(dx,dy);
+      if(d<160&&d>0){
+        const f=(160-d)/160*.008;
+        this.x+=dx*f;this.y+=dy*f;
+      }
+      this.x+=this.vx;this.y+=this.vy;
+      /* soft wrap at edges */
+      if(this.x<0)this.x=W;if(this.x>W)this.x=0;
+      if(this.y<0)this.y=H;if(this.y>H)this.y=0;
       ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
-      ctx.fillStyle=`rgba(91,168,255,${this.a})`;ctx.fill();
+      ctx.fillStyle=`rgba(91,168,255,${alpha})`;ctx.fill();
     }
   }
   const pts=Array.from({length:55},()=>new P());
   const connect=()=>{
     for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){
       const d=Math.hypot(pts[i].x-pts[j].x,pts[i].y-pts[j].y);
-      if(d<100){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.strokeStyle=`rgba(91,168,255,${.025*(1-d/100)})`;ctx.lineWidth=.4;ctx.stroke();}
+      if(d<120){
+        ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);
+        ctx.strokeStyle=`rgba(91,168,255,${.022*(1-d/120)})`;ctx.lineWidth=.4;ctx.stroke();
+      }
     }
   };
-  (function loop(){ctx.clearRect(0,0,W,H);pts.forEach(p=>{p.step();p.draw();});connect();requestAnimationFrame(loop);})();
+  (function loop(){ctx.clearRect(0,0,W,H);pts.forEach(p=>p.step());connect();requestAnimationFrame(loop);})();
 })();
 
 /* 4 — SCROLL PROGRESS */
