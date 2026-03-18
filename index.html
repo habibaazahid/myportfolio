@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Habiba Zahid — Frontend Developer</title>
-<meta name="description" content="Aspiring Frontend Developer & CS Student. 6+ years freelance, ⭐5-star Upwork."/>
+<meta name="description" content="Aspiring Frontend Developer & CS Student. 6+ years freelance, 5-star Upwork."/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
 <!-- React + Babel for JSX -->
@@ -138,93 +138,89 @@ h2.sec-title em{font-style:normal;color:var(--blue)}
 .reveal.visible{opacity:1;transform:none}
 
 /* HERO */
-#hero{min-height:100vh;padding:140px 52px 90px;display:grid;grid-template-columns:1fr 460px;align-items:center;gap:72px;overflow:hidden}
-.h-avail{display:inline-flex;align-items:center;gap:10px;font-family:var(--fm);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:38px;opacity:0;animation:fadeUp .7s .1s var(--sp) forwards}
-.h-pulse{position:relative;width:10px;height:10px}
+/* ══ HERO ══ */
+#hero{min-height:100vh;padding:0 52px;display:grid;grid-template-columns:1fr 500px;align-items:center;gap:60px;overflow:hidden;position:relative}
+
+/* Available badge */
+.h-avail{display:inline-flex;align-items:center;gap:10px;font-family:var(--fm);font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);margin-bottom:28px;opacity:0;animation:fadeUp .7s .1s var(--sp) forwards}
+.h-pulse{position:relative;width:9px;height:9px;flex-shrink:0}
 .h-pulse::before{content:'';position:absolute;inset:0;border-radius:50%;background:var(--teal)}
 .h-pulse::after{content:'';position:absolute;inset:0;border-radius:50%;border:1.5px solid var(--teal);animation:pout 2.3s ease-out infinite}
 @keyframes pout{0%{transform:scale(1);opacity:.8}100%{transform:scale(3);opacity:0}}
-.h-name{font-family:var(--fh);font-weight:800;font-size:clamp(3rem,5.5vw,5.3rem);letter-spacing:-.05em;line-height:1.05;margin-bottom:26px;opacity:0;animation:fadeUp .9s .2s var(--sp) forwards}
-.h-name .grad{display:block;margin-top:6px;background:linear-gradient(135deg,var(--blue),var(--violet) 50%,var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:200% auto;animation:gshift 5s linear infinite}
+
+/* BIG name */
+.h-name{font-family:var(--fh);font-weight:800;font-size:clamp(4rem,7.5vw,7.5rem);letter-spacing:-.06em;line-height:.98;margin-bottom:22px;opacity:0;animation:fadeUp .9s .18s var(--sp) forwards}
+.h-name .grad{display:block;background:linear-gradient(135deg,var(--blue),var(--violet) 45%,var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:200% auto;animation:gshift 5s linear infinite}
 @keyframes gshift{0%{background-position:0% center}100%{background-position:200% center}}
-.h-role{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mu1);padding:8px 16px;border-radius:5px;border:1px solid var(--e1);background:rgba(11,24,41,.7);margin-bottom:26px;opacity:0;animation:fadeUp .8s .36s var(--sp) forwards}
+
+/* Role tag */
+.h-role{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mu1);padding:7px 15px;border-radius:5px;border:1px solid var(--e1);background:rgba(11,24,41,.7);margin-bottom:20px;opacity:0;animation:fadeUp .8s .3s var(--sp) forwards}
 [data-theme=light] .h-role{background:rgba(255,255,255,.7)}
-.h-role::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--blue);box-shadow:0 0 8px var(--blue)}
-.h-desc{font-size:clamp(.9rem,1.1vw,1rem);font-weight:300;color:var(--mu1);line-height:1.88;max-width:480px;margin-bottom:40px;opacity:0;animation:fadeUp .8s .48s var(--sp) forwards}
-.h-desc strong{color:var(--tx);font-weight:400}
-.h-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:52px;opacity:0;animation:fadeUp .8s .6s var(--sp) forwards}
-.btn-primary{font-family:var(--fm);font-size:.74rem;letter-spacing:.07em;padding:13px 28px;border-radius:6px;cursor:pointer;background:linear-gradient(135deg,var(--blue2),var(--violet));color:#fff;position:relative;overflow:hidden;transition:transform .3s var(--sp),box-shadow .3s}
+.h-role::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--blue);box-shadow:0 0 8px var(--blue);flex-shrink:0}
+
+/* Desc */
+.h-desc{font-size:clamp(.9rem,1.05vw,.97rem);font-weight:300;color:var(--mu1);line-height:1.9;max-width:510px;margin-bottom:34px;opacity:0;animation:fadeUp .8s .42s var(--sp) forwards}
+.h-desc strong{color:var(--tx);font-weight:500}
+
+/* Buttons */
+.h-btns{display:flex;gap:11px;flex-wrap:wrap;margin-bottom:44px;opacity:0;animation:fadeUp .8s .54s var(--sp) forwards}
+.btn-primary{font-family:var(--fm);font-size:.72rem;letter-spacing:.07em;padding:13px 28px;border-radius:6px;cursor:pointer;background:linear-gradient(135deg,var(--blue2),var(--violet));color:#fff;position:relative;overflow:hidden;transition:transform .3s var(--sp),box-shadow .3s;border:none}
 .btn-primary::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--blue),var(--teal));opacity:0;transition:opacity .3s}
 .btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 50px rgba(91,168,255,.35)}
 .btn-primary:hover::before{opacity:1}
 .btn-primary span{position:relative;z-index:1}
-.btn-ghost{font-family:var(--fm);font-size:.74rem;letter-spacing:.07em;padding:13px 28px;border-radius:6px;cursor:pointer;color:var(--mu1);border:1px solid var(--e2);transition:all .25s var(--sp)}
+.btn-ghost{font-family:var(--fm);font-size:.72rem;letter-spacing:.07em;padding:13px 26px;border-radius:6px;cursor:pointer;color:var(--mu1);border:1px solid var(--e2);background:transparent;transition:all .25s var(--sp)}
 .btn-ghost:hover{color:var(--tx);border-color:var(--teal);background:rgba(45,212,191,.06);transform:translateY(-3px)}
-.h-stats{display:flex;gap:2px;opacity:0;animation:fadeUp .8s .72s var(--sp) forwards}
-.hstat{flex:1;background:rgba(11,24,41,.65);border:1px solid var(--e1);padding:17px 14px;backdrop-filter:blur(12px);transition:border-color .3s;position:relative;overflow:hidden;cursor:default}
-[data-theme=light] .hstat{background:rgba(255,255,255,.75)}
-.hstat::before{content:'';position:absolute;bottom:0;left:0;right:0;height:1.5px;background:linear-gradient(90deg,var(--blue),var(--teal));transform:scaleX(0);transform-origin:left;transition:transform .38s var(--sp)}
-.hstat:hover{border-color:var(--e2)}
-.hstat:hover::before{transform:scaleX(1)}
-.hstat-n{font-family:var(--fh);font-size:1.5rem;font-weight:800;line-height:1;background:linear-gradient(135deg,var(--blue),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px}
-.hstat-l{font-family:var(--fm);font-size:.58rem;color:var(--mu2);letter-spacing:.12em;text-transform:uppercase}
 
-/* Hero right */
-.hero-right{display:flex;flex-direction:column;gap:13px;opacity:0;animation:fadeUp .9s .28s var(--sp) forwards}
-.code-card{background:var(--surf);border:1px solid var(--e1);border-radius:12px;overflow:hidden;position:relative}
-.code-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(167,139,250,.6) 30%,rgba(91,168,255,.6) 60%,transparent)}
-.cc-bar{padding:11px 15px;display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.02);border-bottom:1px solid var(--e1)}
-.cc-dots{display:flex;gap:5px}
-.cc-dot{width:10px;height:10px;border-radius:50%}
-.cc-dot:nth-child(1){background:#ff5f57}
-.cc-dot:nth-child(2){background:#febc2e}
-.cc-dot:nth-child(3){background:#28c840}
+/* Stats strip */
+.h-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;opacity:0;animation:fadeUp .8s .66s var(--sp) forwards}
+.hstat{background:rgba(11,24,41,.65);border:1px solid var(--e1);padding:18px 16px;backdrop-filter:blur(12px);position:relative;overflow:hidden;cursor:default;transition:border-color .3s,transform .3s var(--sp)}
+[data-theme=light] .hstat{background:rgba(255,255,255,.75)}
+.hstat::before{content:'';position:absolute;bottom:0;left:0;right:0;height:1.5px;background:linear-gradient(90deg,var(--blue),var(--teal));transform:scaleX(0);transform-origin:left;transition:transform .4s var(--sp)}
+.hstat:hover{border-color:var(--e2);transform:translateY(-3px)}
+.hstat:hover::before{transform:scaleX(1)}
+.hstat-n{font-family:var(--fh);font-size:1.75rem;font-weight:800;line-height:1;background:linear-gradient(135deg,var(--blue),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:5px}
+.hstat-l{font-family:var(--fm);font-size:.57rem;color:var(--mu2);letter-spacing:.13em;text-transform:uppercase}
+
+/* ── HERO RIGHT ── */
+.hero-right{display:flex;flex-direction:column;gap:11px;opacity:0;animation:fadeUp .9s .22s var(--sp) forwards}
+
+/* Code card */
+.code-card{background:var(--surf);border:1px solid var(--e1);border-radius:14px;overflow:hidden;position:relative;transition:border-color .3s,box-shadow .3s}
+.code-card:hover{border-color:var(--e2);box-shadow:0 24px 64px rgba(91,168,255,.1)}
+.code-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(167,139,250,.7) 30%,rgba(91,168,255,.7) 60%,transparent)}
+.cc-bar{padding:11px 16px;display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.025);border-bottom:1px solid var(--e1)}
+.cc-dots{display:flex;gap:6px}
+.cc-dot{width:11px;height:11px;border-radius:50%}
+.cc-dot:nth-child(1){background:#ff5f57}.cc-dot:nth-child(2){background:#febc2e}.cc-dot:nth-child(3){background:#28c840}
 .cc-fname{font-family:var(--fm);font-size:.62rem;color:var(--mu2);margin-left:auto}
-.cc-body{padding:17px 20px;font-family:var(--fm);font-size:.74rem;line-height:2}
+.cc-body{padding:18px 22px;font-family:var(--fm);font-size:.75rem;line-height:2.1;background:var(--surf)}
 .t-kw{color:var(--violet)}.t-str{color:var(--teal)}.t-fn{color:var(--blue)}.t-prop{color:var(--pink)}.t-num{color:var(--amber)}.t-cm{color:var(--mu2)}
 .t-cursor{display:inline-block;width:2px;height:.88em;background:var(--teal);margin-left:1px;animation:blink 1s ease-in-out infinite;vertical-align:middle}
 @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
-/* 3D orbit widget */
-.orbit-widget{background:var(--surf);border:1px solid var(--e1);border-radius:12px;padding:18px;height:160px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
-.orbit-center{font-family:var(--fh);font-size:.85rem;font-weight:700;color:var(--blue);position:relative;z-index:2;text-shadow:0 0 20px rgba(91,168,255,.5)}
-.orbit-ring{position:absolute;border-radius:50%;border:1px dashed;animation:orbitSpin linear infinite;transform-style:preserve-3d}
-.orbit-ring:nth-child(1){width:120px;height:120px;border-color:rgba(91,168,255,.25);animation-duration:8s}
-.orbit-ring:nth-child(2){width:170px;height:170px;border-color:rgba(167,139,250,.2);animation-duration:13s;animation-direction:reverse}
-.orbit-ring:nth-child(3){width:220px;height:220px;border-color:rgba(45,212,191,.15);animation-duration:18s}
-@keyframes orbitSpin{from{transform:rotate(0deg) rotateX(70deg)}to{transform:rotate(360deg) rotateX(70deg)}}
-.orbit-node{position:absolute;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;border:1px solid var(--e2);background:var(--surf2);animation:nodeFloat 3s ease-in-out infinite;cursor:pointer;transition:box-shadow .2s}
-.orbit-node:hover{box-shadow:0 0 16px var(--blue)}
-@keyframes nodeFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-/* hero mini stats */
-.mini-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
-.ms{background:var(--surf);border:1px solid var(--e1);padding:20px 14px;text-align:center;transition:border-color .3s,transform .3s var(--sp);cursor:default;overflow:hidden;position:relative}
-.ms::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),var(--teal));transform:scaleX(0);transform-origin:left;transition:transform .38s var(--sp)}
-.ms:hover{border-color:var(--e2);transform:translateY(-4px)}
-.ms:hover::after{transform:scaleX(1)}
-.ms-n{font-family:var(--fh);font-size:1.9rem;font-weight:800;line-height:1;background:linear-gradient(135deg,var(--blue),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px}
-.ms-l{font-family:var(--fm);font-size:.57rem;color:var(--mu2);letter-spacing:.12em;text-transform:uppercase}
-.scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeUp .8s 1.4s var(--sp) forwards}
-.scroll-hint span{font-family:var(--fm);font-size:.59rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mu2)}
-.scroll-mouse{width:20px;height:32px;border:1.5px solid rgba(91,168,255,.3);border-radius:11px;display:flex;justify-content:center;padding-top:5px}
-.scroll-wheel{width:2.5px;height:5px;background:var(--blue);border-radius:2px;animation:sw 1.8s ease-in-out infinite}
-@keyframes sw{0%,100%{transform:translateY(0);opacity:1}60%{transform:translateY(10px);opacity:0}}
 
-/* TERMINAL */
-.terminal{background:rgba(5,9,18,.96);border:1px solid rgba(45,212,191,.25);border-radius:12px;overflow:hidden;font-family:var(--fm)}
-.term-bar{padding:11px 15px;background:rgba(255,255,255,.025);border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:8px}
-.term-dot{width:10px;height:10px;border-radius:50%}
-.term-dot:nth-child(1){background:#ff5f57}.term-dot:nth-child(2){background:#febc2e}.term-dot:nth-child(3){background:#28c840}
-.term-title{font-size:.62rem;color:var(--mu2);margin-left:auto}
-.term-body{padding:14px 18px;font-size:.74rem;line-height:1.85;min-height:200px;max-height:280px;overflow-y:auto}
-.term-body::-webkit-scrollbar{width:2px}
-.term-line{display:flex;gap:10px;margin-bottom:4px}
-.term-prompt{color:var(--teal);flex-shrink:0}
-.term-out{color:var(--mu1);word-break:break-word}
-.term-out.success{color:var(--green)}
-.term-out.error{color:var(--red)}
-.term-out.info{color:var(--blue)}
-.term-out.highlight{color:var(--amber)}
-.term-input-row{display:flex;gap:10px;align-items:center;border-top:1px solid rgba(255,255,255,.05);padding:10px 18px}
+/* Open to work card */
+.h-open{background:var(--surf);border:1px solid rgba(52,211,153,.22);border-radius:12px;padding:14px 18px;display:flex;align-items:center;gap:13px;transition:border-color .3s,transform .3s var(--sp)}
+.h-open:hover{border-color:rgba(52,211,153,.45);transform:translateY(-2px)}
+.h-open-dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:pout 2.5s ease-out infinite;flex-shrink:0}
+.h-open-txt{font-family:var(--fm);font-size:.64rem;color:var(--mu1);line-height:1.55;letter-spacing:.03em}
+.h-open-txt strong{color:var(--tx);display:block;font-family:var(--fh);font-size:.78rem;margin-bottom:1px;font-weight:700;letter-spacing:-.01em}
+
+/* Tech pills */
+.h-tech{display:flex;gap:6px;flex-wrap:wrap}
+.h-tech-pill{font-family:var(--fm);font-size:.59rem;padding:4px 11px;border-radius:20px;border:1px solid var(--e1);color:var(--mu1);background:var(--surf);letter-spacing:.04em;transition:all .2s;cursor:default}
+.h-tech-pill:hover{border-color:var(--blue);color:var(--tx);background:rgba(91,168,255,.07);transform:translateY(-2px)}
+
+/* Hide old orbit/mini-stats */
+.orbit-widget,.mini-stats{display:none}
+
+/* Scroll hint */
+.scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeUp .8s 1.4s var(--sp) forwards}
+.scroll-hint span{font-family:var(--fm);font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mu2)}
+.scroll-mouse{width:20px;height:32px;border:1.5px solid rgba(91,168,255,.28);border-radius:11px;display:flex;justify-content:center;padding-top:5px}
+.scroll-wheel{width:2.5px;height:5px;background:var(--blue);border-radius:2px;animation:sw 1.8s ease-in-out infinite}
+@keyframes sw{0%,100%{transform:translateY(0);opacity:1}60%{transform:translateY(9px);opacity:0}}
+
 .term-input-prompt{color:var(--teal);font-size:.74rem;font-family:var(--fm);flex-shrink:0}
 .term-input{flex:1;background:transparent;font-family:var(--fm);font-size:.74rem;color:var(--tx);caret-color:var(--teal)}
 
@@ -531,8 +527,9 @@ footer a:hover{color:var(--teal)}
 
 /* RESPONSIVE */
 @media(max-width:1100px){
-  #hero{grid-template-columns:1fr;gap:40px;padding-top:120px}
-  .hero-right{max-width:500px}
+  #hero{grid-template-columns:1fr;gap:36px;padding:120px 52px 60px}
+  .hero-right{max-width:520px}
+  .h-name{font-size:clamp(3.5rem,8vw,5.5rem)}
   .as-grid{grid-template-columns:1fr;gap:36px}
   .proj-grid{grid-template-columns:1fr 1fr}
   .proj-card.feat{grid-column:span 2}
@@ -1068,43 +1065,54 @@ function Navbar({ dark, sound, toggleTheme, toggleSound, activeSection }) {
    HERO SECTION
 ══════════════════════════════════════════ */
 function Hero({ sound }) {
-  const typeText = useTyping(['"React"', '"Node.js"', '"MongoDB"', '"TypeScript"', '"Next.js"']);
-  const statRef = useRef(null);
-  const [rev, runRev] = useCounter(847200,'',1500);
-  const [usr, runUsr] = useCounter(24891,'',1500);
-  const [conv, runConv] = useCounter(3847,'',1500);
-  const statVis = useIntersection(statRef, 0.5);
-  const hasRun = useRef(false);
-  useEffect(()=>{
-    if(statVis&&!hasRun.current){hasRun.current=true;runRev();runUsr();runConv();}
-  },[statVis]);
-
-  const orbitNodes = [
-    {label:'React',top:'10%',left:'75%',delay:'0s'},
-    {label:'CSS3',top:'50%',left:'88%',delay:'.5s'},
-    {label:'JS',top:'85%',left:'60%',delay:'1s'},
-    {label:'Node',top:'80%',left:'20%',delay:'1.5s'},
-    {label:'Git',top:'15%',left:'30%',delay:'2s'},
-  ];
+  const typeText = useTyping(['"React"', '"Next.js"', '"TypeScript"', '"Node.js"', '"MongoDB"']);
+  const TECH = ['HTML5','CSS3','JavaScript','React','Node.js','Git','Figma','Vercel'];
 
   return (
     <section id="hero">
+      {/* LEFT */}
       <div>
         <div className="h-avail"><div className="h-pulse"></div>Available for Remote Work</div>
-        <h1 className="h-name">Habiba<br/><span className="grad">Zahid.</span></h1>
-        <div className="h-role"><span style={{width:5,height:5,borderRadius:'50%',background:'var(--blue)',boxShadow:'0 0 8px var(--blue)',flexShrink:0,display:'inline-block'}}></span>Aspiring Frontend Developer &amp; CS Student</div>
-        <p className="h-desc">Studying at <strong>IU International University, Germany</strong> · Building beautiful, responsive web experiences with HTML, CSS, JavaScript &amp; React · <strong>6+ years</strong> of freelance excellence on ⭐ 5-star Upwork.</p>
-        <div className="h-btns">
-          <a href="#projects" className="btn-primary" onClick={e=>{e.preventDefault();if(sound)AudioEngine.click();document.getElementById('projects')?.scrollIntoView({behavior:'smooth'})}}><span>View My Work</span></a>
-          <a href="#contact" className="btn-ghost" onClick={e=>{e.preventDefault();if(sound)AudioEngine.click();document.getElementById('contact')?.scrollIntoView({behavior:'smooth'})}}>Get In Touch</a>
-          <a href="https://linkedin.com/in/habibazahid03" target="_blank" rel="noopener" className="btn-ghost" style={{display:'flex',alignItems:'center',gap:6}} onClick={()=>sound&&AudioEngine.click()}>💼 LinkedIn</a>
+
+        <h1 className="h-name">
+          Habiba<br/>
+          <span className="grad">Zahid.</span>
+        </h1>
+
+        <div className="h-role">
+          <span style={{width:5,height:5,borderRadius:'50%',background:'var(--blue)',boxShadow:'0 0 8px var(--blue)',flexShrink:0,display:'inline-block'}}/>
+          Aspiring Frontend Developer &amp; CS Student
         </div>
-        <div className="h-stats" ref={statRef}>
+
+        <p className="h-desc">
+          Studying at <strong>IU International University, Germany</strong> · Building beautiful,
+          responsive web experiences with HTML, CSS, JavaScript &amp; React ·&nbsp;
+          <strong>6+ years</strong> freelance on ⭐&nbsp;5-star Upwork.
+        </p>
+
+        <div className="h-btns">
+          <a href="#projects" className="btn-primary"
+            onClick={e=>{e.preventDefault();if(sound)AudioEngine.click();document.getElementById('projects')?.scrollIntoView({behavior:'smooth'})}}>
+            <span>View My Work</span>
+          </a>
+          <a href="#contact" className="btn-ghost"
+            onClick={e=>{e.preventDefault();if(sound)AudioEngine.click();document.getElementById('contact')?.scrollIntoView({behavior:'smooth'})}}>
+            Get In Touch
+          </a>
+          <a href="https://linkedin.com/in/habibazahid03" target="_blank" rel="noopener"
+            className="btn-ghost" onClick={()=>sound&&AudioEngine.click()}>
+            💼 LinkedIn
+          </a>
+        </div>
+
+        <div className="h-stats">
           <div className="hstat"><div className="hstat-n">6+</div><div className="hstat-l">Years Freelancing</div></div>
           <div className="hstat"><div className="hstat-n">7</div><div className="hstat-l">Certifications</div></div>
           <div className="hstat"><div className="hstat-n">⭐ 5</div><div className="hstat-l">Upwork Rating</div></div>
         </div>
       </div>
+
+      {/* RIGHT */}
       <div className="hero-right">
         <div className="code-card" id="ccard">
           <div className="cc-bar">
@@ -1116,29 +1124,28 @@ function Hero({ sound }) {
             <div>&nbsp;&nbsp;<span className="t-prop">role</span>: <span className="t-str">"Frontend Developer"</span>,</div>
             <div>&nbsp;&nbsp;<span className="t-prop">university</span>: <span className="t-str">"IU Germany"</span>,</div>
             <div>&nbsp;&nbsp;<span className="t-prop">experience</span>: <span className="t-str">"6+ years"</span>,</div>
-            <div>&nbsp;&nbsp;<span className="t-prop">rating</span>: <span className="t-str">"⭐ 5-star"</span>,</div>
+            <div>&nbsp;&nbsp;<span className="t-prop">rating</span>: <span className="t-str">"⭐ 5-star Upwork"</span>,</div>
             <div>&nbsp;&nbsp;<span className="t-prop">learning</span>: [<span className="t-str">{typeText}</span><span className="t-cursor"/>],</div>
             <div>&nbsp;&nbsp;<span className="t-prop">openTo</span>: <span className="t-str">"remote roles"</span>,</div>
             <div>{'}'};</div>
           </div>
         </div>
-        <div className="orbit-widget">
-          <div className="orbit-ring"></div>
-          <div className="orbit-ring"></div>
-          <div className="orbit-ring"></div>
-          <div className="orbit-center">Frontend</div>
-          {orbitNodes.map((n,i)=>(
-            <div key={i} className="orbit-node" style={{top:n.top,left:n.left,animationDelay:n.delay}}
-              onMouseEnter={()=>sound&&AudioEngine.hover()}
-              title={n.label}>{n.label.slice(0,2)}</div>
+
+        <div className="h-open">
+          <div className="h-open-dot"/>
+          <div className="h-open-txt">
+            <strong>Open to Work</strong>
+            Junior Frontend Developer · Remote · Full-time or Freelance
+          </div>
+        </div>
+
+        <div className="h-tech">
+          {TECH.map(t => (
+            <span key={t} className="h-tech-pill" onMouseEnter={()=>sound&&AudioEngine.hover()}>{t}</span>
           ))}
         </div>
-        <div className="mini-stats">
-          <div className="ms"><div className="ms-n">6+</div><div className="ms-l">Years</div></div>
-          <div className="ms"><div className="ms-n">7</div><div className="ms-l">Certs</div></div>
-          <div className="ms"><div className="ms-n">⭐5</div><div className="ms-l">Rating</div></div>
-        </div>
       </div>
+
       <div className="scroll-hint">
         <div className="scroll-mouse"><div className="scroll-wheel"/></div>
         <span>Scroll</span>
@@ -1147,9 +1154,6 @@ function Hero({ sound }) {
   );
 }
 
-/* ══════════════════════════════════════════
-   INTERACTIVE TERMINAL COMPONENT
-══════════════════════════════════════════ */
 function Terminal({ sound }) {
   const [lines, setLines] = useState([
     { prompt:'system', out:'Welcome to habiba.sh — type help for commands', cls:'info' },
@@ -1633,8 +1637,8 @@ function Journey({ sound }) {
           <div className="tl-sub">Timeline</div>
           <div className="tl" ref={timelineRef}>
             {[
-              {date:'2023–2027',role:'BSc Computer Science',org:'IU International University, Germany · Distance',desc:'Studying core CS modules alongside self-driven frontend development. Building real projects and earning industry certifications.'},
-              {date:'2019–Present',role:'Freelance Content Writer',org:'Upwork · Remote · ⭐ 5-Star Rating',desc:'Delivered eBooks, research papers, and marketing copy — boosting client engagement by 30%. Maintained a perfect 5-star rating.'},
+              {date:'2023–2027',role:'BSc Computer Science',org:'IU International University, Germany ',desc:'Studying core CS modules alongside self-driven frontend development. Building real projects and earning industry certifications.'},
+              {date:'2019–Present',role:'Freelance Content Writer',org:'Upwork · Remote · 5-Star Rating',desc:'Delivered eBooks, research papers, and marketing copy — boosting client engagement by 30%. Maintained a perfect 5-star rating.'},
               {date:'Ongoing',role:'Student Ambassador',org:'IU International University',desc:'Represented the university globally, organized orientations, and served as a bridge between students and faculty.'},
             ].map((e,i)=>(
               <div key={i} className="tle">
