@@ -62,17 +62,18 @@ button,input,textarea{font-family:var(--fb);border:none;outline:none;background:
 [data-theme=light] .dot-grid{opacity:.3}
 
 /* CUSTOM CURSOR */
-#cur-dot,#cur-ring,#cur-glow{position:fixed;border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%)}
-#cur-dot{width:6px;height:6px;background:var(--teal);box-shadow:0 0 12px var(--teal);transition:width .2s,height .2s,background .2s,opacity .2s;z-index:9999}
-#cur-ring{width:34px;height:34px;border:1.5px solid rgba(91,168,255,.4);transition:width .45s var(--sp),height .45s var(--sp),border-color .3s}
-#cur-glow{width:120px;height:120px;background:radial-gradient(circle,rgba(91,168,255,.06),transparent 70%);transition:width .6s,height .6s;pointer-events:none}
-#cur-label{position:fixed;transform:translate(14px,-50%);font-family:var(--fm);font-size:.6rem;color:var(--blue);letter-spacing:.1em;pointer-events:none;z-index:9999;opacity:0;transition:opacity .2s;white-space:nowrap;border:1px solid var(--e2);padding:3px 8px;border-radius:4px;background:var(--surf);backdrop-filter:blur(8px)}
-body.cur-project #cur-dot{width:0;height:0}
-body.cur-project #cur-ring{width:60px;height:60px;border-color:rgba(244,114,182,.5)}
+#cur-dot,#cur-ring,#cur-glow{position:fixed;border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:0;top:-200px;left:-200px}
+#cur-dot{width:6px;height:6px;background:var(--teal);box-shadow:0 0 12px var(--teal);transition:width .18s,height .18s,background .2s,opacity .22s;z-index:9999}
+#cur-ring{width:34px;height:34px;border:1.5px solid rgba(91,168,255,.45);transition:width .42s var(--sp),height .42s var(--sp),border-color .28s,opacity .22s}
+#cur-glow{width:120px;height:120px;background:radial-gradient(circle,rgba(91,168,255,.06),transparent 70%);transition:opacity .3s;pointer-events:none}
+#cur-label{position:fixed;transform:translate(16px,-50%);font-family:var(--fm);font-size:.58rem;color:var(--blue);letter-spacing:.1em;pointer-events:none;z-index:9999;opacity:0;transition:opacity .18s;white-space:nowrap;border:1px solid var(--e2);padding:3px 9px;border-radius:4px;background:var(--surf);backdrop-filter:blur(8px);top:-200px;left:-200px}
+body.cur-active #cur-dot,body.cur-active #cur-ring,body.cur-active #cur-glow{opacity:1}
+body.cur-project #cur-dot{width:0;height:0;opacity:0}
+body.cur-project #cur-ring{width:58px;height:58px;border-color:rgba(244,114,182,.55)}
 body.cur-project #cur-label{opacity:1}
-body.cur-link #cur-ring{width:48px;height:48px;border-color:rgba(45,212,191,.6)}
-body.cur-text #cur-dot{width:2px;height:18px;border-radius:1px}
-
+body.cur-link #cur-dot{background:var(--blue)}
+body.cur-link #cur-ring{width:46px;height:46px;border-color:rgba(45,212,191,.65)}
+body.cur-text #cur-dot{width:2px;height:18px;border-radius:1px;background:var(--blue)}
 /* PROGRESS + SCROLL NAV */
 #scroll-prog{position:fixed;top:0;left:0;height:2px;width:0;z-index:8999;background:linear-gradient(90deg,var(--violet),var(--blue),var(--teal));box-shadow:0 0 12px rgba(91,168,255,.6)}
 #dot-nav{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:800;display:flex;flex-direction:column;gap:10px;align-items:center}
@@ -294,39 +295,72 @@ h2.sec-title em{font-style:normal;color:var(--blue)}
 .ring-txt{fill:var(--tx);font-family:var(--fh);font-weight:700;font-size:11.5px;text-anchor:middle;dominant-baseline:central;transform:rotate(90deg);transform-origin:center}
 .ring-lbl{font-family:var(--fm);font-size:.62rem;color:var(--mu1);letter-spacing:.06em;text-align:center}
 
-/* ═══ PROJECTS — APPLE STYLE ═══ */
-#projects{background:var(--bg);padding:120px 0}
-.proj-eyebrow{padding:0 52px;margin-bottom:0}
-.proj-headline{font-family:var(--fh);font-weight:800;font-size:clamp(2.8rem,5.5vw,5rem);letter-spacing:-.04em;line-height:1.08;padding:0 52px;margin-bottom:72px;color:var(--tx)}
+/* ═══ PROJECTS — UNIFORM GRID ═══ */
+#projects{background:var(--bg);padding:110px 0}
+.proj-headline{font-family:var(--fh);font-weight:800;font-size:clamp(2.4rem,4.5vw,4rem);letter-spacing:-.04em;line-height:1.08;padding:0 52px;margin-bottom:56px;color:var(--tx)}
 .proj-headline em{font-style:normal;background:linear-gradient(135deg,var(--blue),var(--violet) 50%,var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
-/* ── FEATURED PROJECT SPOTLIGHT ── */
-.proj-featured-wrapper{
-  position:relative;margin:0 0 3px;
-}
-/* Glowing top border — signals this is THE project */
-.proj-featured-wrapper::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;z-index:10;
-  background:linear-gradient(90deg,transparent 0%,var(--blue) 20%,var(--violet) 50%,var(--pink) 80%,transparent 100%);
-  box-shadow:0 0 24px rgba(91,168,255,.5);
-}
-/* Subtle ambient glow around the whole card */
-.proj-featured-wrapper::after{
-  content:'';position:absolute;inset:-1px;z-index:-1;
-  background:linear-gradient(135deg,rgba(91,168,255,.08),rgba(167,139,250,.06),rgba(244,114,182,.04));
-  border-radius:0;pointer-events:none;
-}
-/* Featured label crown */
-.proj-featured-crown{
-  position:absolute;top:-13px;left:52px;z-index:20;
-  display:inline-flex;align-items:center;gap:7px;
-  font-family:var(--fm);font-size:.6rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
-  background:linear-gradient(135deg,var(--blue),var(--violet));
-  color:#fff;padding:5px 14px;border-radius:20px;
-  box-shadow:0 4px 20px rgba(91,168,255,.35);
-  white-space:nowrap;
-}
-.proj-featured-crown::before{content:'★ ';font-size:.7rem}
+/* 3-column uniform grid */
+.pc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:0}
+
+/* Every card identical */
+.pc{position:relative;overflow:hidden;cursor:pointer;background:var(--surf);border:1px solid var(--e1);min-height:380px;display:flex;flex-direction:column;transition:border-color .35s,transform .35s var(--sp)}
+.pc:hover{border-color:var(--e2);transform:translateY(-5px)}
+
+/* Canvas bg */
+.pc-grad{position:absolute;inset:0;z-index:0;transition:opacity .4s}
+.pc:hover .pc-grad{opacity:.8}
+.pc-lines{position:absolute;inset:0;z-index:1;background:repeating-linear-gradient(90deg,transparent,transparent 38px,rgba(91,168,255,.022) 38px,rgba(91,168,255,.022) 39px),repeating-linear-gradient(0deg,transparent,transparent 38px,rgba(91,168,255,.022) 38px,rgba(91,168,255,.022) 39px);opacity:0;transition:opacity .4s;pointer-events:none}
+.pc:hover .pc-lines{opacity:1}
+.pc-emoji{position:absolute;bottom:-14px;right:-10px;font-size:clamp(4.5rem,7vw,7rem);opacity:.14;pointer-events:none;transition:all .5s var(--sp);filter:blur(.5px);z-index:1}
+.pc:hover .pc-emoji{opacity:.24;transform:scale(1.06) translate(-6px,-8px)}
+
+/* Card body sits on top of all bg layers */
+.pc-body{position:relative;z-index:2;padding:28px 26px;display:flex;flex-direction:column;flex:1;gap:0}
+
+/* Top row */
+.pc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.pc-status{font-family:var(--fm);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:12px}
+.pc-status.live{background:rgba(52,211,153,.12);color:var(--green);border:1px solid rgba(52,211,153,.22)}
+.pc-status.wip{background:rgba(251,191,36,.1);color:var(--amber);border:1px solid rgba(251,191,36,.2)}
+.pc-status.soon{background:rgba(167,139,250,.1);color:var(--violet);border:1px solid rgba(167,139,250,.2)}
+.pc-num{font-family:var(--fm);font-size:.58rem;color:var(--mu2);letter-spacing:.18em;text-transform:uppercase}
+
+/* Crown badge (featured only) */
+.pc-crown{display:inline-flex;align-items:center;gap:6px;font-family:var(--fm);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);padding:4px 11px;border-radius:20px;background:rgba(91,168,255,.1);border:1px solid rgba(91,168,255,.28);margin-bottom:12px;width:fit-content}
+
+/* Title */
+.pc-title{font-family:var(--fh);font-size:1.2rem;font-weight:800;letter-spacing:-.02em;line-height:1.2;margin-bottom:10px;color:var(--tx)}
+
+/* Desc */
+.pc-desc{font-size:.83rem;font-weight:300;color:var(--mu1);line-height:1.8;flex:1;margin-bottom:18px}
+
+/* Stack */
+.pc-stack{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:20px}
+.pc-tag{font-family:var(--fm);font-size:.58rem;padding:3px 9px;border-radius:20px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:var(--mu1);letter-spacing:.04em;transition:all .2s}
+.pc:hover .pc-tag{border-color:var(--e2);color:var(--tx)}
+
+/* Footer links */
+.pc-foot{display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid var(--e1)}
+.pc-link{font-family:var(--fm);font-size:.68rem;color:var(--blue);letter-spacing:.06em;display:inline-flex;align-items:center;gap:6px;transition:all .25s;text-decoration:none}
+.pc-link:hover{color:var(--teal);gap:10px}
+.pc-arr{transition:transform .2s}
+.pc-link:hover .pc-arr{transform:translate(2px,-2px)}
+.pc-link2{font-family:var(--fm);font-size:.65rem;color:var(--mu2);letter-spacing:.06em;transition:color .2s;text-decoration:none;margin-left:auto}
+.pc-link2:hover{color:var(--mu1)}
+
+/* CTA */
+.proj-cta-strip{padding:48px 52px 0;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.proj-cta-text{font-family:var(--fm);font-size:.7rem;color:var(--mu2);letter-spacing:.08em}
+.proj-cta-link{font-family:var(--fm);font-size:.7rem;color:var(--blue);letter-spacing:.07em;display:flex;align-items:center;gap:7px;transition:gap .3s,color .3s;text-decoration:none}
+.proj-cta-link:hover{gap:13px;color:var(--teal)}
+.proj-cta-link::after{content:'→'}
+
+/* Responsive */
+@media(max-width:1100px){.pc-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.pc-grid{grid-template-columns:1fr}.proj-headline,.proj-cta-strip{padding-left:18px;padding-right:18px}}
+
+/* old bento styles removed — replaced by uniform .pc-grid above */
 
 
 .proj-hero{position:relative;margin:0 0 3px;overflow:hidden;cursor:pointer}
@@ -353,82 +387,8 @@ h2.sec-title em{font-style:normal;color:var(--blue)}
 .proj-hero-bg{position:absolute;inset:0;z-index:1;pointer-events:none}
 
 /* ── PROJECT GRID (3-column + 2-column bento) ── */
-.proj-bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:auto;gap:3px;padding:0}
-
-/* Card sizes via col spans */
-.pbc{position:relative;overflow:hidden;cursor:pointer;background:var(--surf);transition:background .35s}
-.pbc:hover{background:var(--surf2)}
-.pbc-s{grid-column:span 4}  /* small — 4/12 */
-.pbc-m{grid-column:span 6}  /* medium — 6/12 */
-.pbc-l{grid-column:span 8}  /* large — 8/12 */
-
-/* Inner layout */
-.pbc-inner{padding:44px 40px;height:100%;display:flex;flex-direction:column;justify-content:space-between;min-height:360px;position:relative}
-.pbc-s .pbc-inner{padding:36px 30px;min-height:300px}
-
-/* Visual area */
-.pbc-visual{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
-.pbc-gradient{position:absolute;inset:0;opacity:.55;transition:opacity .4s}
-.pbc:hover .pbc-gradient{opacity:.75}
-.pbc-emoji{position:absolute;bottom:-10px;right:-10px;font-size:clamp(4rem,7vw,6.5rem);opacity:.18;transition:all .5s var(--sp);pointer-events:none;filter:blur(.5px)}
-.pbc:hover .pbc-emoji{opacity:.28;transform:scale(1.06) translate(-6px,-6px)}
-.pbc-lines{position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(91,168,255,.025) 40px,rgba(91,168,255,.025) 41px),repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(91,168,255,.025) 40px,rgba(91,168,255,.025) 41px);opacity:0;transition:opacity .4s}
-.pbc:hover .pbc-lines{opacity:1}
-
-/* Content */
-.pbc-content{position:relative;z-index:1}
-.pbc-num{font-family:var(--fm);font-size:.58rem;color:var(--mu2);letter-spacing:.22em;text-transform:uppercase;margin-bottom:14px}
-.pbc-title{font-family:var(--fh);font-size:clamp(1.1rem,1.8vw,1.55rem);font-weight:800;letter-spacing:-.02em;line-height:1.2;margin-bottom:10px;color:var(--tx)}
-.pbc-s .pbc-title{font-size:1.15rem}
-.pbc-desc{font-size:.84rem;font-weight:300;color:var(--mu1);line-height:1.8;margin-bottom:0}
-
-/* Bottom bar */
-.pbc-foot{position:relative;z-index:1;display:flex;align-items:flex-end;justify-content:space-between;margin-top:24px;gap:12px}
-.pbc-stack{display:flex;flex-wrap:wrap;gap:5px}
-.pbc-tag{font-family:var(--fm);font-size:.58rem;padding:3px 9px;border-radius:20px;letter-spacing:.04em;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:var(--mu1);transition:all .2s}
-.pbc:hover .pbc-tag{border-color:var(--e2);color:var(--tx)}
-.pbc-arrow{width:36px;height:36px;border-radius:50%;border:1px solid var(--e2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .28s var(--sp);color:var(--mu1);font-size:.8rem}
-.pbc:hover .pbc-arrow{background:var(--blue);border-color:var(--blue);color:#fff;transform:rotate(45deg)}
-
-/* Status pill */
-.pbc-status{display:inline-flex;align-items:center;gap:5px;font-family:var(--fm);font-size:.57rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:12px;margin-bottom:12px}
-.pbc-status.live{background:rgba(52,211,153,.12);color:var(--green);border:1px solid rgba(52,211,153,.22)}
-.pbc-status.wip{background:rgba(251,191,36,.1);color:var(--amber);border:1px solid rgba(251,191,36,.2)}
-.pbc-status.soon{background:rgba(167,139,250,.1);color:var(--violet);border:1px solid rgba(167,139,250,.2)}
-.pbc-status.live::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);animation:lp2 2s ease-in-out infinite}
+/* old bento CSS removed — replaced by .pc-grid */
 @keyframes lp2{0%,100%{box-shadow:0 0 0 0 rgba(52,211,153,.5)}50%{box-shadow:0 0 0 4px rgba(52,211,153,0)}}
-
-/* Hover reveal link */
-.pbc-link{position:absolute;bottom:36px;right:36px;font-family:var(--fm);font-size:.65rem;letter-spacing:.08em;color:var(--blue);opacity:0;transform:translateY(6px);transition:all .28s var(--sp);display:flex;align-items:center;gap:5px;text-decoration:none;z-index:5}
-.pbc:hover .pbc-link{opacity:1;transform:translateY(0)}
-.pbc-link::after{content:'↗';transition:transform .2s}
-.pbc-link:hover::after{transform:translate(2px,-2px)}
-
-/* Scroll indicator strip */
-.proj-cta-strip{padding:52px 52px 0;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
-.proj-cta-text{font-family:var(--fm);font-size:.72rem;color:var(--mu2);letter-spacing:.08em}
-.proj-cta-link{font-family:var(--fm);font-size:.72rem;color:var(--blue);letter-spacing:.07em;display:flex;align-items:center;gap:7px;transition:gap .3s,color .3s}
-.proj-cta-link:hover{gap:13px;color:var(--teal)}
-.proj-cta-link::after{content:'→'}
-
-@media(max-width:1100px){
-  .proj-hero-inner{grid-template-columns:1fr}
-  .proj-hero-visual{min-height:40vh}
-  .proj-hero-content{padding:52px 40px}
-  .pbc-s{grid-column:span 6}
-  .pbc-m{grid-column:span 6}
-  .pbc-l{grid-column:span 12}
-}
-@media(max-width:768px){
-  .proj-headline,.proj-eyebrow,.proj-cta-strip{padding:0 28px}
-  .proj-hero-content{padding:36px 28px}
-  .pbc-s,.pbc-m,.pbc-l{grid-column:span 12}
-  .pbc-inner{min-height:260px;padding:28px 24px}
-}
-@media(max-width:480px){
-  .proj-headline{font-size:2.4rem;letter-spacing:-.03em}
-  .proj-hero-visual{min-height:30vh}
-}
 
 /* JOURNEY */
 #journey{background:var(--bg2)}
@@ -854,22 +814,94 @@ function initParticles() {
    MAGNETIC CURSOR ENGINE
 ══════════════════════════════════════════ */
 function initCursor() {
-  const dot = document.getElementById('cur-dot');
-  const ring = document.getElementById('cur-ring');
-  const glow = document.getElementById('cur-glow');
+  const dot   = document.getElementById('cur-dot');
+  const ring  = document.getElementById('cur-ring');
+  const glow  = document.getElementById('cur-glow');
   const label = document.getElementById('cur-label');
   if (!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
-  let cx=0,cy=0,rx=0,ry=0,gx=0,gy=0;
-  window.addEventListener('mousemove', e => { cx=e.clientX; cy=e.clientY; dot.style.left=cx+'px'; dot.style.top=cy+'px'; label.style.left=cx+'px'; label.style.top=cy+'px'; }, { passive:true });
+
+  let cx = innerWidth/2, cy = innerHeight/2;
+  let rx = cx, ry = cy, gx = cx, gy = cy;
+  let activated = false;
+
+  window.addEventListener('mousemove', e => {
+    cx = e.clientX; cy = e.clientY;
+    dot.style.left = cx + 'px'; dot.style.top = cy + 'px';
+    label.style.left = (cx + 16) + 'px'; label.style.top = cy + 'px';
+    if (!activated) {
+      activated = true;
+      document.body.classList.add('cur-active');
+    }
+  }, { passive: true });
+
   (function loop() {
-    rx+=(cx-rx)*.12; ry+=(cy-ry)*.12;
-    gx+=(cx-gx)*.06; gy+=(cy-gy)*.06;
-    ring.style.left=rx+'px'; ring.style.top=ry+'px';
-    glow.style.left=gx+'px'; glow.style.top=gy+'px';
+    rx += (cx - rx) * .12; ry += (cy - ry) * .12;
+    gx += (cx - gx) * .06; gy += (cy - gy) * .06;
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    glow.style.left = gx + 'px'; glow.style.top = gy + 'px';
     requestAnimationFrame(loop);
   })();
-  window.addEventListener('mousedown', () => dot.style.transform='translate(-50%,-50%) scale(.4)');
-  window.addEventListener('mouseup', () => dot.style.transform='translate(-50%,-50%) scale(1)');
+
+  window.addEventListener('mousedown', () => {
+    dot.style.transform  = 'translate(-50%,-50%) scale(.3)';
+    ring.style.transform = 'translate(-50%,-50%) scale(.85)';
+  });
+  window.addEventListener('mouseup', () => {
+    dot.style.transform  = 'translate(-50%,-50%) scale(1)';
+    ring.style.transform = 'translate(-50%,-50%) scale(1)';
+  });
+
+  function resetCursor() {
+    dot.style.width  = '6px'; dot.style.height = '6px';
+    dot.style.borderRadius = '50%'; dot.style.opacity = '1';
+    ring.style.width = '34px'; ring.style.height = '34px';
+    ring.style.borderColor = 'rgba(91,168,255,.4)';
+    label.style.opacity = '0';
+  }
+  function linkCursor() {
+    dot.style.width  = '0'; dot.style.height = '0';
+    ring.style.width = '46px'; ring.style.height = '46px';
+    ring.style.borderColor = 'rgba(45,212,191,.65)';
+    label.style.opacity = '0';
+  }
+  function projectCursor(txt) {
+    dot.style.width  = '0'; dot.style.height = '0';
+    ring.style.width = '62px'; ring.style.height = '62px';
+    ring.style.borderColor = 'rgba(244,114,182,.55)';
+    label.style.opacity = '1';
+    label.textContent = txt || 'View';
+  }
+  function textCursor() {
+    dot.style.width  = '2px'; dot.style.height = '18px';
+    dot.style.borderRadius = '1px';
+  }
+
+  function attachHovers() {
+    const done = '_chz';
+    // Links, buttons, interactive elements → link cursor
+    document.querySelectorAll('a, button, .dock-item, .tab-btn, .faq-q, .nbtn, .cv-btn, .cert-card, .astat, .hstat, .ms, .dn-dot').forEach(el => {
+      if (el[done]) return; el[done] = true;
+      el.addEventListener('mouseenter', linkCursor);
+      el.addEventListener('mouseleave', resetCursor);
+    });
+    // Project cards → project cursor
+    document.querySelectorAll('.pbc, .proj-hero-inner, .rv-card, .srv-card').forEach(el => {
+      if (el[done]) return; el[done] = true;
+      el.addEventListener('mouseenter', () => { projectCursor('View'); el._isProjCard = true; });
+      el.addEventListener('mouseleave', () => { el._isProjCard = false; resetCursor(); });
+    });
+    // Text inputs → text cursor
+    document.querySelectorAll('input, textarea').forEach(el => {
+      if (el[done]) return; el[done] = true;
+      el.addEventListener('mouseenter', textCursor);
+      el.addEventListener('mouseleave', resetCursor);
+      el.addEventListener('focus', textCursor);
+      el.addEventListener('blur', resetCursor);
+    });
+  }
+
+  setTimeout(attachHovers, 700);
+  setInterval(attachHovers, 2500);
 }
 
 /* ══════════════════════════════════════════
@@ -1036,7 +1068,7 @@ function Navbar({ dark, sound, toggleTheme, toggleSound, activeSection }) {
    HERO SECTION
 ══════════════════════════════════════════ */
 function Hero({ sound }) {
-  const typeText = useTyping(['"React"', '"Next.js"', '"TypeScript"', '"Node.js"', '"MERN Stack"']);
+  const typeText = useTyping(['"React"', '"Node.js"', '"MongoDB"', '"TypeScript"', '"Next.js"']);
   const statRef = useRef(null);
   const [rev, runRev] = useCounter(847200,'',1500);
   const [usr, runUsr] = useCounter(24891,'',1500);
@@ -1132,7 +1164,23 @@ function Terminal({ sound }) {
     help: { out: ['Available commands:', '  skills     → View my tech skills', '  projects   → See my projects', '  certs      → List certifications', '  experience → Work experience', '  contact    → Get in touch', '  social     → Social links', '  clear      → Clear terminal', '  whoami     → About Habiba'], cls:'info' },
     whoami: { out:['Habiba Zahid — Aspiring Frontend Developer', 'CS Student @ IU International University, Germany', '6+ years freelance content writer on Upwork (⭐5-star)', 'Building: React · Node.js · MongoDB · TypeScript'], cls:'success' },
     skills: { out:['★ Frontend: HTML5(90%) CSS3(90%) JavaScript(75%) React(65%)', '★ Backend:  Node.js Express MongoDB REST APIs', '★ Tools:    Git Figma VS Code Vercel Tailwind', '★ AI/ML:    IBM AI Google AI Machine Learning'], cls:'highlight' },
-    projects: { out:['01 → Portfolio Website    [HTML/CSS/JS] · Live on Vercel', '02 → Restaurant Page     [HTML/CSS/JS] · In progress', '03 → E-Commerce UI       [React/Shopify]  · In progress', '04 → Blog Platform       [MERN Stack]    · Coming soon', '05 → Agency Landing      [HTML/CSS/JS]   · In progress', '06 → Admin Dashboard     [React/Charts]  · dashboard.habibazahid.com'], cls:'highlight' },
+    projects: { out:[
+      '01 → Personal Portfolio Website',
+      '     Built from scratch — HTML5, CSS3, JavaScript, no frameworks',
+      '     · Animated particle canvas + mouse interaction',
+      '     · Custom cursor with sparkle trail',
+      '     · Scroll reveal animations, 3D tilt, magnetic buttons',
+      '     · Skill tabs, progress bars, SVG rings, code card hero',
+      '     · Mobile-responsive · Hamburger menu',
+      '     Live → myportfolio.habibazahid.com',
+      '     GitHub → github.com/habibaazahid/myportfolio__',
+      '',
+      '02 → Restaurant Landing Page     [HTML/CSS/JS]   · In progress',
+      '03 → E-Commerce Storefront       [React/Shopify]  · In progress',
+      '04 → Blog Platform               [MERN Stack]    · Coming soon',
+      '05 → Agency Landing Page         [HTML/CSS/JS]   · In progress',
+      '06 → Admin Dashboard             [React/Chart.js] · dashboard.habibazahid.com',
+    ], cls:'highlight' },
     certs: { out:['1. CS50 — Harvard University', '2. HTML/CSS/JS — Johns Hopkins University', '3. Digital Marketing — University of Edinburgh', '4. IBM AI Foundations — IBM', '5. Machine Learning with Python — IBM', '6. Google AI Essentials — Google', '7. Maximize Productivity With AI — Google'], cls:'success' },
     experience: { out:['2023–2027 · BSc CS @ IU International University, Germany', '2019–Now  · Freelance Content Writer @ Upwork (⭐5-star)', 'Ongoing   · Student Ambassador @ IU International'], cls:'info' },
     contact: { out:['📧 habibaazahid@gmail.com', '🔗 linkedin.com/in/habibazahid03', '⚡ github.com/habibaazahid'], cls:'success' },
@@ -1343,44 +1391,12 @@ function AboutSkills({ sound }) {
 ══════════════════════════════════════════ */
 
 /* ── Live canvas animation for hero project ── */
-function HeroCanvas() {
-  const ref = useRef(null);
-  useEffect(() => {
-    const c = ref.current; if (!c) return;
-    const ctx = c.getContext('2d');
-    let W = c.width = c.offsetWidth, H = c.height = c.offsetHeight;
-    const ro = new ResizeObserver(() => { W = c.width = c.offsetWidth; H = c.height = c.offsetHeight; });
-    ro.observe(c);
-    // Floating code lines
-    const lines = Array.from({length:18}, () => ({
-      x: Math.random()*W, y: Math.random()*H,
-      text: ['const habiba = {}','<Portfolio/>','useState(magic)','CSS: ✨','React.render()','npm run dev','git push','Vercel deploy 🚀','⭐ 5-star','HTML · CSS · JS','class Developer','export default HZ','.animate({y:0})','flex-direction:🔥','border-radius:∞','z-index: 999'][Math.floor(Math.random()*16)],
-      speed: .18 + Math.random()*.22,
-      opacity: .04 + Math.random()*.09,
-      size: 10 + Math.random()*4,
-    }));
-    let raf;
-    const draw = () => {
-      ctx.clearRect(0,0,W,H);
-      ctx.font = '500 12px "JetBrains Mono", monospace';
-      lines.forEach(l => {
-        l.y -= l.speed;
-        if (l.y < -30) { l.y = H + 20; l.x = Math.random()*W; }
-        ctx.globalAlpha = l.opacity;
-        ctx.fillStyle = '#5ba8ff';
-        ctx.font = `500 ${l.size}px "JetBrains Mono", monospace`;
-        ctx.fillText(l.text, l.x, l.y);
-      });
-      ctx.globalAlpha = 1;
-      raf = requestAnimationFrame(draw);
-    };
-    draw();
-    return () => { cancelAnimationFrame(raf); ro.disconnect(); };
-  }, []);
-  return <canvas ref={ref} className="proj-hero-canvas" style={{width:'100%',height:'100%'}}/>;
-}
+/* ══════════════════════════════════════════
+   PROJECTS — UNIFORM 3-COLUMN GRID
+   All 6 cards identical size & layout
+══════════════════════════════════════════ */
 
-/* ── Per-card mini canvas animations ── */
+/* Mini canvas for card backgrounds */
 function CardCanvas({ type }) {
   const ref = useRef(null);
   useEffect(() => {
@@ -1391,63 +1407,49 @@ function CardCanvas({ type }) {
     ro.observe(c);
     let raf, t = 0;
     const draw = () => {
-      ctx.clearRect(0,0,W,H);
-      t += .008;
-      if (type === 'restaurant') {
-        // Warm wave lines
-        for (let i = 0; i < 5; i++) {
+      ctx.clearRect(0,0,W,H); t += .008;
+      if (type === 'portfolio') {
+        const lines2 = ['const habiba = {}','<Portfolio/>','useState(magic)','WebGL ✨','React.render()','npm run dev','Vercel deploy 🚀','⭐ 5-star'];
+        lines2.forEach((txt, i) => {
+          const y = ((t * 18 + i * (H/lines2.length)) % H);
+          ctx.globalAlpha = .055; ctx.fillStyle = '#5ba8ff';
+          ctx.font = '11px JetBrains Mono, monospace'; ctx.fillText(txt, 12 + (i%3)*22, y);
+        }); ctx.globalAlpha = 1;
+      } else if (type === 'restaurant') {
+        for (let i = 0; i < 4; i++) {
           ctx.beginPath();
-          ctx.moveTo(0, H*.3 + i*18);
-          for (let x = 0; x <= W; x += 4) {
-            ctx.lineTo(x, H*.3 + i*18 + Math.sin(x*.015 + t + i) * 14);
-          }
-          ctx.strokeStyle = `rgba(251,191,36,${.04 + i*.015})`;
-          ctx.lineWidth = 1.2; ctx.stroke();
+          for (let x = 0; x <= W; x += 3) ctx.lineTo(x, H*.4 + i*16 + Math.sin(x*.018 + t + i) * 12);
+          ctx.strokeStyle = `rgba(251,191,36,${.04 + i*.012})`; ctx.lineWidth = 1.2; ctx.stroke();
         }
       } else if (type === 'ecommerce') {
-        // Grid dots product layout
-        const cols = 4, rows = 3;
-        for (let r = 0; r < rows; r++) for (let col = 0; col < cols; col++) {
-          const x = (col+1)*W/(cols+1), y = (r+1)*H/(rows+1);
-          const scale = .7 + Math.sin(t*1.2 + r*1.1 + col*.9)*.3;
-          ctx.beginPath(); ctx.arc(x, y, 8*scale, 0, Math.PI*2);
-          ctx.fillStyle = `rgba(244,114,182,${.08*scale})`;
-          ctx.fill();
-          ctx.strokeStyle = `rgba(244,114,182,${.14*scale})`;
-          ctx.lineWidth = 1; ctx.stroke();
+        const cols=4, rows=3;
+        for (let r=0;r<rows;r++) for (let col=0;col<cols;col++) {
+          const x=(col+1)*W/(cols+1), y=(r+1)*H/(rows+1), s=.7+Math.sin(t*1.2+r+col)*.3;
+          ctx.beginPath(); ctx.arc(x,y,7*s,0,Math.PI*2);
+          ctx.fillStyle=`rgba(244,114,182,${.07*s})`; ctx.fill();
+          ctx.strokeStyle=`rgba(244,114,182,${.12*s})`; ctx.lineWidth=1; ctx.stroke();
         }
       } else if (type === 'blog') {
-        // Text lines flowing
-        const lineH = 14;
-        for (let i = 0; i < 7; i++) {
-          const y = 20 + i*lineH + (t*14 % (H+lineH*7)) - lineH*7;
-          const w = (W*.35 + W*.5*Math.abs(Math.sin(i*.7+t*.2))) % W;
-          ctx.fillStyle = `rgba(167,139,250,${.06 + (i%3)*.025})`;
-          ctx.fillRect(18, y, w, 5);
+        for (let i=0;i<6;i++) {
+          const y=((t*12+i*(H/6))%H);
+          const w=W*.3+W*.45*Math.abs(Math.sin(i*.7+t*.2));
+          ctx.fillStyle=`rgba(167,139,250,${.055+(i%3)*.02})`; ctx.fillRect(14,y,w,4);
         }
       } else if (type === 'agency') {
-        // Geometric shapes morphing
-        ctx.save();
-        ctx.translate(W/2, H/2);
-        for (let i = 0; i < 3; i++) {
-          ctx.rotate(t*.4 + i*Math.PI/1.5);
-          ctx.strokeStyle = `rgba(45,212,191,${.08 + i*.03})`;
-          ctx.lineWidth = 1;
-          ctx.strokeRect(-30-i*14, -30-i*14, 60+i*28, 60+i*28);
+        ctx.save(); ctx.translate(W/2,H/2);
+        for (let i=0;i<3;i++) {
+          ctx.rotate(t*.35+i*Math.PI/1.5);
+          ctx.strokeStyle=`rgba(45,212,191,${.07+i*.025})`; ctx.lineWidth=1;
+          ctx.strokeRect(-28-i*12,-28-i*12,56+i*24,56+i*24);
         }
         ctx.restore();
       } else if (type === 'dashboard') {
-        // Mini chart bars
-        const bars = [.4,.7,.5,.9,.6,.8,.45,.75];
-        bars.forEach((h, i) => {
-          const animated = h + Math.sin(t*1.5 + i)*.1;
-          const bw = W/(bars.length+1), bx = (i+.5)*bw, by = H*(1-animated*.7);
-          const grad = ctx.createLinearGradient(bx, by, bx, H);
-          grad.addColorStop(0, `rgba(91,168,255,.35)`);
-          grad.addColorStop(1, `rgba(91,168,255,.05)`);
-          ctx.fillStyle = grad;
-          ctx.beginPath(); ctx.roundRect(bx - bw*.3, by, bw*.6, H-by, 3);
-          ctx.fill();
+        const bars=[.4,.7,.5,.9,.6,.8,.45,.75];
+        bars.forEach((h2,i) => {
+          const a=h2+Math.sin(t*1.5+i)*.1, bw=W/(bars.length+1), bx=(i+.5)*bw, by=H*(1-a*.7);
+          const g=ctx.createLinearGradient(bx,by,bx,H);
+          g.addColorStop(0,'rgba(91,168,255,.3)'); g.addColorStop(1,'rgba(91,168,255,.04)');
+          ctx.fillStyle=g; ctx.beginPath(); ctx.roundRect(bx-bw*.28,by,bw*.56,H-by,3); ctx.fill();
         });
       }
       raf = requestAnimationFrame(draw);
@@ -1458,218 +1460,147 @@ function CardCanvas({ type }) {
   return <canvas ref={ref} style={{position:'absolute',inset:0,width:'100%',height:'100%',pointerEvents:'none',zIndex:0}}/>;
 }
 
-/* ── Single bento card ── */
-function BentoCard({ project, size, sound }) {
-  const [hovered, setHovered] = useState(false);
+/* Single project card — uniform layout */
+function ProjectCard({ project, sound }) {
   const ref = useRef(null);
-  const vis = useIntersection(ref, 0.15);
-
-  const enter = () => {
-    setHovered(true);
-    document.body.classList.add('cur-project');
-    const el = document.getElementById('cur-label');
-    if (el) el.textContent = project.linkLabel;
-    if (sound) AudioEngine.hover();
-  };
-  const leave = () => { setHovered(false); document.body.classList.remove('cur-project'); };
+  const vis = useIntersection(ref, 0.1);
 
   return (
     <div
       ref={ref}
-      className={`pbc pbc-${size}`}
-      style={{ opacity: vis ? 1 : 0, transform: vis ? 'none' : 'translateY(24px)', transition: 'opacity .65s ease, transform .65s var(--sp)' }}
-      onMouseEnter={enter}
-      onMouseLeave={leave}
-      onClick={() => { if (project.link !== '#') { window.open(project.link,'_blank'); if(sound) AudioEngine.click(); } }}
+      className="pc"
+      style={{
+        opacity: vis ? 1 : 0,
+        transform: vis ? 'none' : 'translateY(24px)',
+        transition: 'opacity .6s ease, transform .6s var(--sp)',
+      }}
+      onMouseEnter={() => sound && AudioEngine.hover()}
+      onClick={() => { if(project.link) { window.open(project.link,'_blank'); if(sound) AudioEngine.click(); }}}
     >
-      {/* Animated canvas background */}
-      {project.canvasType && <CardCanvas type={project.canvasType}/>}
+      {/* Animated canvas bg */}
+      <CardCanvas type={project.canvasType}/>
 
-      {/* Gradient overlay */}
-      <div className="pbc-visual">
-        <div className="pbc-gradient" style={{background: project.gradient}}/>
-        <div className="pbc-emoji">{project.emoji}</div>
-        <div className="pbc-lines"/>
-      </div>
+      {/* Gradient + grid lines overlay */}
+      <div className="pc-grad" style={{background: project.gradient}}/>
+      <div className="pc-lines"/>
 
-      <div className="pbc-inner">
-        <div className="pbc-content">
-          <div className={`pbc-status ${project.status}`}>
-            {project.status === 'live' ? 'Live' : project.status === 'wip' ? 'In Progress' : 'Coming Soon'}
-          </div>
-          <div className="pbc-num">{project.num}</div>
-          <div className="pbc-title">{project.title}</div>
-          <div className="pbc-desc">{project.desc}</div>
+      {/* Large emoji watermark */}
+      <div className="pc-emoji">{project.emoji}</div>
+
+      {/* Content */}
+      <div className="pc-body">
+        {/* Top: status + number */}
+        <div className="pc-top">
+          <span className={`pc-status ${project.status}`}>
+            {project.status === 'live' ? '● Live' : project.status === 'wip' ? '◐ In Progress' : '○ Coming Soon'}
+          </span>
+          <span className="pc-num">{project.num}</span>
         </div>
-        <div className="pbc-foot">
-          <div className="pbc-stack">
-            {project.stack.map(t => <span key={t} className="pbc-tag">{t}</span>)}
-          </div>
-          <div className="pbc-arrow">↗</div>
+
+        {/* Crown badge for featured */}
+        {project.featured && (
+          <div className="pc-crown">★ Featured · This Website</div>
+        )}
+
+        {/* Title & desc */}
+        <div className="pc-title">{project.title}</div>
+        <div className="pc-desc">{project.desc}</div>
+
+        {/* Stack tags */}
+        <div className="pc-stack">
+          {project.stack.map(t => <span key={t} className="pc-tag">{t}</span>)}
+        </div>
+
+        {/* Footer: link */}
+        <div className="pc-foot">
+          <a href={project.link} target="_blank" rel="noopener"
+            className="pc-link"
+            onClick={e => { e.stopPropagation(); if(sound) AudioEngine.click(); }}>
+            {project.linkLabel} <span className="pc-arr">↗</span>
+          </a>
+          {project.link2 && (
+            <a href={project.link2} target="_blank" rel="noopener"
+              className="pc-link2"
+              onClick={e => { e.stopPropagation(); if(sound) AudioEngine.click(); }}>
+              {project.link2Label}
+            </a>
+          )}
         </div>
       </div>
-
-      {project.link !== '#' && (
-        <a href={project.link} target="_blank" rel="noopener" className="pbc-link"
-          onClick={e => { e.stopPropagation(); if(sound) AudioEngine.click(); }}>
-          {project.linkLabel}
-        </a>
-      )}
     </div>
   );
 }
 
-/* ══ MAIN PROJECTS COMPONENT ══ */
 function Projects({ sound }) {
-  const heroRef = useRef(null);
-  const heroVis = useIntersection(heroRef, 0.15);
-  const [heroParallax, setHeroParallax] = useState({ x: 0, y: 0 });
-
-  // Parallax on hero
-  const onHeroMove = useCallback(e => {
-    const r = heroRef.current?.getBoundingClientRect();
-    if (!r) return;
-    setHeroParallax({
-      x: ((e.clientX - r.left) / r.width - .5) * 18,
-      y: ((e.clientY - r.top) / r.height - .5) * 12,
-    });
-  }, []);
-
-  const BENTO = [
+  const PROJECTS = [
+    {
+      num:'01', title:'Personal Portfolio Website',
+      desc:'React SPA with WebGL shader background, interactive terminal, Web Audio engine, magnetic cursor, floating dock, and Konami easter egg. No build tools.',
+      stack:['HTML5','CSS3','JavaScript','React','WebGL','Vercel'],
+      status:'live', gradient:'linear-gradient(135deg,rgba(91,168,255,.18),rgba(167,139,250,.1),transparent 65%)',
+      emoji:'🌐', canvasType:'portfolio',
+      link:'https://myportfolio.habibazahid.com', linkLabel:'Visit Live',
+      link2:'https://github.com/habibaazahid', link2Label:'GitHub',
+      featured: true,
+    },
     {
       num:'02', title:'Restaurant Landing Page',
       desc:'Animated menu reveals, sticky booking form, parallax imagery, and scroll-driven transitions.',
-      stack:['HTML5','CSS3','JavaScript'], status:'wip',
-      gradient:'linear-gradient(135deg,rgba(251,191,36,.18),rgba(249,115,22,.1),transparent 70%)',
-      emoji:'🍕', canvasType:'restaurant', link:'https://github.com/habibaazahid', linkLabel:'View on GitHub',
+      stack:['HTML5','CSS3','JavaScript'],
+      status:'wip', gradient:'linear-gradient(135deg,rgba(251,191,36,.16),rgba(249,115,22,.08),transparent 65%)',
+      emoji:'🍕', canvasType:'restaurant',
+      link:'https://github.com/habibaazahid', linkLabel:'View on GitHub',
     },
     {
       num:'03', title:'E-Commerce Storefront',
       desc:'Responsive product grid with filtering, cart logic, animations, and Shopify integration.',
-      stack:['React','Shopify API','CSS Animations'], status:'wip',
-      gradient:'linear-gradient(135deg,rgba(244,114,182,.2),rgba(167,139,250,.1),transparent 70%)',
-      emoji:'🛍️', canvasType:'ecommerce', link:'https://github.com/habibaazahid', linkLabel:'View on GitHub',
+      stack:['React','Shopify API','CSS Animations'],
+      status:'wip', gradient:'linear-gradient(135deg,rgba(244,114,182,.18),rgba(167,139,250,.1),transparent 65%)',
+      emoji:'🛍️', canvasType:'ecommerce',
+      link:'https://github.com/habibaazahid', linkLabel:'View on GitHub',
     },
     {
       num:'04', title:'Blog & Content Platform',
-      desc:'Full-stack MERN blogging platform with auth, rich text editor, and SEO-optimized architecture.',
-      stack:['React','Node.js','MongoDB','JWT'], status:'soon',
-      gradient:'linear-gradient(135deg,rgba(167,139,250,.2),rgba(91,168,255,.1),transparent 70%)',
-      emoji:'📝', canvasType:'blog', link:'https://github.com/habibaazahid', linkLabel:'View on GitHub',
+      desc:'Full-stack MERN blogging platform with user auth, rich text editor, and SEO-optimized architecture.',
+      stack:['React','Node.js','MongoDB','JWT'],
+      status:'soon', gradient:'linear-gradient(135deg,rgba(167,139,250,.18),rgba(91,168,255,.1),transparent 65%)',
+      emoji:'📝', canvasType:'blog',
+      link:'https://github.com/habibaazahid', linkLabel:'View on GitHub',
     },
     {
       num:'05', title:'Agency Landing Page',
       desc:'Bold creative agency website with parallax hero, morphing shapes, animated counters, and smooth scroll.',
-      stack:['HTML5','CSS3','JavaScript'], status:'wip',
-      gradient:'linear-gradient(135deg,rgba(45,212,191,.18),rgba(91,168,255,.1),transparent 70%)',
-      emoji:'🏢', canvasType:'agency', link:'https://github.com/habibaazahid', linkLabel:'View on GitHub',
+      stack:['HTML5','CSS3','JavaScript'],
+      status:'wip', gradient:'linear-gradient(135deg,rgba(45,212,191,.16),rgba(91,168,255,.1),transparent 65%)',
+      emoji:'🏢', canvasType:'agency',
+      link:'https://github.com/habibaazahid', linkLabel:'View on GitHub',
     },
     {
       num:'06', title:'Admin Dashboard',
-      desc:'Live analytics dashboard with real-time crypto, weather APIs, Chart.js, dark/light mode, and 10 pages.',
-      stack:['React','Chart.js','Live APIs'], status:'live',
-      gradient:'linear-gradient(135deg,rgba(91,168,255,.22),rgba(45,212,191,.12),transparent 70%)',
-      emoji:'📊', canvasType:'dashboard', link:'https://dashboard.habibazahid.com/', linkLabel:'View Live',
+      desc:'Live analytics dashboard with real-time crypto, weather APIs, Chart.js, dark/light mode, and 11 pages.',
+      stack:['React','Chart.js','Live APIs','Vercel'],
+      status:'live', gradient:'linear-gradient(135deg,rgba(91,168,255,.2),rgba(45,212,191,.1),transparent 65%)',
+      emoji:'📊', canvasType:'dashboard',
+      link:'https://dashboard.habibazahid.com/', linkLabel:'View Live',
+      link2:'https://github.com/habibaazahid', link2Label:'GitHub',
     },
   ];
 
-  // Bento sizing: [m, s, s, m, l] — 12-col grid fills perfectly
-  const SIZES = ['m','s','s','m','l'];
-
   return (
     <section id="projects">
+      <div className="ey" style={{padding:'0 52px'}}>Work</div>
+      <h2 className="proj-headline reveal">My <em>Projects.</em></h2>
 
-      {/* ── Section header ── */}
-      <div className="proj-eyebrow">
-        <div className="ey">Work</div>
-      </div>
-      <h2 className="proj-headline reveal">
-        Six Projects.<br/><em>All Built.</em>
-      </h2>
-
-      {/* ── FEATURED — Full-width cinematic hero card ── */}
-      <div className="proj-featured-wrapper">
-        <div className="proj-featured-crown">Featured Project — This Website</div>
-        <div
-          ref={heroRef}
-          className="proj-hero"
-          style={{
-            opacity: heroVis ? 1 : 0,
-            transform: heroVis ? 'none' : 'translateY(32px)',
-            transition: 'opacity .8s ease, transform .8s var(--sp)',
-          }}
-          onMouseMove={onHeroMove}
-          onMouseLeave={() => setHeroParallax({x:0,y:0})}
-          onMouseEnter={() => { document.body.classList.add('cur-project'); const el=document.getElementById('cur-label'); if(el) el.textContent='View Project'; if(sound) AudioEngine.hover(); }}
-        >
-        <div className="proj-hero-inner">
-          {/* Visual side */}
-          <div className="proj-hero-visual">
-            <HeroCanvas/>
-            {/* Radial glow */}
-            <div className="proj-hero-bg" style={{background:'radial-gradient(ellipse 70% 70% at 50% 50%,rgba(91,168,255,.12),transparent)'}}/>
-            {/* Hero emoji with parallax */}
-            <span className="proj-hero-emoji" style={{transform:`translate(${heroParallax.x*.6}px,${heroParallax.y*.6}px) scale(1)`}}>🌐</span>
-            {/* Live badge */}
-            <div style={{position:'absolute',top:24,left:24,zIndex:5,display:'flex',alignItems:'center',gap:7,fontFamily:'var(--fm)',fontSize:'.62rem',letterSpacing:'.14em',textTransform:'uppercase',color:'var(--green)',background:'rgba(52,211,153,.1)',border:'1px solid rgba(52,211,153,.25)',padding:'5px 12px',borderRadius:20}}>
-              <span style={{width:5,height:5,borderRadius:'50%',background:'var(--green)',boxShadow:'0 0 8px var(--green)',animation:'lp2 2s ease-in-out infinite',display:'inline-block'}}/>
-              Live on Vercel
-            </div>
-          </div>
-
-          {/* Content side */}
-          <div className="proj-hero-content" style={{transform:`translate(${heroParallax.x*.25}px,${heroParallax.y*.25}px)`, transition:'transform .1s linear'}}>
-            <div className="proj-hero-badge">This Portfolio · Built by Habiba</div>
-            <div className="proj-hero-num">01 / 06</div>
-            <h3 className="proj-hero-title">Personal Portfolio<br/>Website</h3>
-            <p className="proj-hero-desc">
-              A React SPA with WebGL shader background, interactive terminal, Web Audio engine, magnetic cursor, floating dock, Konami easter egg, and 8 fully animated sections. Built entirely without a build tool — pure HTML/CSS/JS + CDN React.
-            </p>
-            <div className="proj-hero-stack">
-              {['HTML5','CSS3','JavaScript','React','Babel CDN','WebGL','Vercel'].map(t => (
-                <span key={t} className="pbc-tag" style={{fontSize:'.65rem',padding:'4px 12px',borderRadius:20}}>{t}</span>
-              ))}
-            </div>
-            <div className="proj-hero-links">
-              <a href="https://github.com/habibaazahid" target="_blank" rel="noopener"
-                className="proj-btn-primary"
-                onClick={()=>sound&&AudioEngine.click()}>
-                View on GitHub ↗
-              </a>
-              <a href="https://myportfolio.habibazahid.com" target="_blank" rel="noopener"
-                className="proj-btn-ghost"
-                onClick={()=>sound&&AudioEngine.click()}>
-                Visit Live Site
-              </a>
-            </div>
-
-            {/* Metrics strip */}
-            <div style={{display:'flex',gap:28,marginTop:36,paddingTop:28,borderTop:'1px solid var(--e1)'}}>
-              {[['30+','JS features'],['WebGL','Shader bg'],['100%','Responsive'],['⭐ Vercel','Deployed']].map(([n,l])=>(
-                <div key={l}>
-                  <div style={{fontFamily:'var(--fh)',fontSize:'1.2rem',fontWeight:800,color:'var(--blue)',letterSpacing:'-.5px',lineHeight:1,marginBottom:3}}>{n}</div>
-                  <div style={{fontFamily:'var(--fm)',fontSize:'.58rem',color:'var(--mu2)',letterSpacing:'.1em',textTransform:'uppercase'}}>{l}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-      </div>{/* end proj-featured-wrapper */}
-
-      {/* ── BENTO GRID — 5 remaining projects ── */}
-      <div className="proj-bento">
-        {BENTO.map((p, i) => (
-          <BentoCard key={p.num} project={p} size={SIZES[i]} sound={sound}/>
+      <div className="pc-grid">
+        {PROJECTS.map((p,i) => (
+          <ProjectCard key={p.num} project={p} sound={sound}/>
         ))}
       </div>
 
-      {/* ── CTA strip ── */}
       <div className="proj-cta-strip reveal">
-        <span className="proj-cta-text">More projects being built — follow along on GitHub</span>
+        <span className="proj-cta-text">More projects in progress — follow on GitHub</span>
         <a href="https://github.com/habibaazahid" target="_blank" rel="noopener"
-          className="proj-cta-link"
-          onClick={()=>sound&&AudioEngine.click()}>
+          className="proj-cta-link" onClick={()=>sound&&AudioEngine.click()}>
           github.com/habibaazahid
         </a>
       </div>
@@ -1677,9 +1608,6 @@ function Projects({ sound }) {
   );
 }
 
-/* ══════════════════════════════════════════
-   JOURNEY SECTION
-══════════════════════════════════════════ */
 function Journey({ sound }) {
   const timelineRef = useRef(null);
   useEffect(()=>{
@@ -1901,11 +1829,11 @@ function Contact({ sound }) {
       <div className="cform reveal">
         <div className="typing-indicator" style={{opacity:typing?1:0}}>Habiba is reading your message… ✨</div>
         <div className="cf-row">
-          <div className="cf-field"><label className="cf-label">Your Name</label><input className="cf-input" placeholder="John Doe" value={form.name} onChange={e=>update('name',e.target.value)} onFocus={()=>document.body.classList.add('cur-text')} onBlur={()=>document.body.classList.remove('cur-text')}/></div>
-          <div className="cf-field"><label className="cf-label">Your Email</label><input className="cf-input" type="email" placeholder="john@email.com" value={form.email} onChange={e=>update('email',e.target.value)} onFocus={()=>document.body.classList.add('cur-text')} onBlur={()=>document.body.classList.remove('cur-text')}/></div>
+          <div className="cf-field"><label className="cf-label">Your Name</label><input className="cf-input" placeholder="John Doe" value={form.name} onChange={e=>update('name',e.target.value)}/></div>
+          <div className="cf-field"><label className="cf-label">Your Email</label><input className="cf-input" type="email" placeholder="john@email.com" value={form.email} onChange={e=>update('email',e.target.value)}/></div>
         </div>
-        <div className="cf-row"><div className="cf-field full"><label className="cf-label">Subject</label><input className="cf-input" placeholder="Frontend role / Freelance project" value={form.subject} onChange={e=>update('subject',e.target.value)} onFocus={()=>document.body.classList.add('cur-text')} onBlur={()=>document.body.classList.remove('cur-text')}/></div></div>
-        <div className="cf-row"><div className="cf-field full"><label className="cf-label">Message</label><textarea className="cf-textarea" placeholder="Tell me about your project…" value={form.msg} onChange={e=>update('msg',e.target.value)} onFocus={()=>document.body.classList.add('cur-text')} onBlur={()=>document.body.classList.remove('cur-text')}/><div className={`char-count ${charClass}`}>{chars}/{MAX}</div></div></div>
+        <div className="cf-row"><div className="cf-field full"><label className="cf-label">Subject</label><input className="cf-input" placeholder="Frontend role / Freelance project" value={form.subject} onChange={e=>update('subject',e.target.value)}/></div></div>
+        <div className="cf-row"><div className="cf-field full"><label className="cf-label">Message</label><textarea className="cf-textarea" placeholder="Tell me about your project…" value={form.msg} onChange={e=>update('msg',e.target.value)}/><div className={`char-count ${charClass}`}>{chars}/{MAX}</div></div></div>
         <button className={`cf-send ${sent?'sent':''}`} onClick={send}><span>{sent?'✓ Sent! Opening mail…':'Send Message ↗'}</span></button>
       </div>
       <div className="cemail reveal" onClick={copyEmail}>habibaazahid@gmail.com ✉</div>
